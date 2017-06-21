@@ -6,7 +6,7 @@ Use DB;
 use Auth;
 use App\Http\Controllers\Controller;
 
-use App/Player;
+use App\Player;
 
 class PlayerController extends Controller
 {
@@ -14,9 +14,13 @@ class PlayerController extends Controller
   public function getPlayerName($id)
   {
     //use the Player model, and filter out our result using the id from the url
-      $player = Player::where("player_id","=",$id);
+      //$player = Player::where("player_id","=",$id);
+      $player = DB::table("player")->where("player_id","=",$id)->get();
+
 
       //call our player view and pass in the player data
-      return view("player")->with(["data"=>$player]);
+     //return view("player")->with(["data"=>$player]);
+     return view("player")->with(["player"=>$player[0]]);
+     //return view("player", compact("player"));
   }
 }

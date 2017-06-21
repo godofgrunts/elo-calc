@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Model;
-
+#use Illuminate\Notifications\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Player extends Model
 {
